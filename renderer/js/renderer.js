@@ -4,3 +4,36 @@ const outputPath = document.querySelector('#output-path');
 const filename = document.querySelector('#filename');
 const heightInput = document.querySelector('#height');
 const widthInput = document.querySelector('#width');
+
+// Load an Image
+function loadImage(e) {
+  const file = e.target.files[0];
+
+  if (!isFileImage(file)) {
+    console.log('Please select a valid image ');
+    return;
+  }
+
+  // Get orgiional dimensions
+  const image = new Image();
+  image.src = URL.createObjectURL(file);
+
+  image.onload = function () {
+    widthInput.value = this.width;
+    heightInput.value = this.height;
+  };
+
+  //displays form and file name
+  form.style.display = 'block';
+  filename.innerHTML = file.name;
+  outputPath.innerText = path.join(os.homedir(), 'imageresizer');
+}
+
+// make sure file is image
+function isFileImage(file) {
+  const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  return file && acceptedImageTypes.includes(file['type']);
+}
+
+img.addEventListener('change', loadImage);
