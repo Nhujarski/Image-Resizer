@@ -2,4 +2,4 @@
 
 a desktop application used for resizing image files.
 
-Built using Electron with JAvaScript, HTML and CSS.
+Built using Electron with JavaScript, HTML and CSS.
