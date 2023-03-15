@@ -10,7 +10,7 @@ function loadImage(e) {
   const file = e.target.files[0];
 
   if (!isFileImage(file)) {
-    console.log('Please select a valid image ');
+    alertError('Please select a valid image ');
     return;
   }
 
@@ -34,6 +34,33 @@ function isFileImage(file) {
   const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   return file && acceptedImageTypes.includes(file['type']);
+}
+
+// alert an error
+function alertError(message) {
+  Toastify.toast({
+    text: message,
+    duration: 5000,
+    style: {
+      background: 'red',
+      color: 'white',
+      textAlign: 'center',
+    },
+  });
+}
+
+// alert success
+// alert an error
+function alertSuccess(message) {
+  Toastify.toast({
+    text: message,
+    duration: 5000,
+    style: {
+      background: 'green',
+      color: 'white',
+      textAlign: 'center',
+    },
+  });
 }
 
 img.addEventListener('change', loadImage);
